@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main id="container">
+        <!--Header -->
+        <header id="navbar">
+        <h3>Weather App</h3>
+        </header>
+
+        <!--Section 1 -->
+    <section id="search">
+        <input type="text" id="cityInput" placeholder="Enter city name">
+        <button id="weatherBtn">search</button>
+    </section>
+
+        <!--Section 2 -->
+    <section  id="hero">
+        <div id="currentWeather">
+            <h3> Search weather......   </h3>
+        </div>
+    </section>
+
+            <!--Section 3 -->
+    <section id="stats">
+        <div> 
+            <p>Humidity</p>
+             <p id="humidity">---</p>
+        </div>
+        <hr>
+        <div>
+            <p>Wind</p>
+             <p id="wind">---</p>
+        </div>
+        <hr>
+        <div>
+            <p>UV Index</p>
+             <p id="uvIndex">---</p>
+        </div>
+    </section>
+
+            <!--Section 4 -->
+    <section id="forecastContainer">
+        <h4>5-Day Forecast</h4>
+        <div id="forecast"></div>
+    </section>
+
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>
