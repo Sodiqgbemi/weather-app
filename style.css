@@ -66,59 +66,95 @@
     flex-direction: column;
     align-items: center;
 }
-
+/* FORECAST */
 #forecast {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 12px;
-    padding: 1rem 0;
+    margin-top: 15px;
+}
+#forecastContainer h4 {
+    color: rgb(46, 45, 45);
+    margin-bottom: 10px;
+    font-size: 13px;
+    padding-top: 20px;
+}
+
+#forecast h4 {
+    margin-bottom: 10px;
+    font-size: 13px;
+    padding-top: 20px;
+}
+.forecast-max {
+    color: #d1261d;
+    font-size: 20px;
 }
 
 .forecast-day {
-    background: #fff;
-    border: 1px solid #e8e8e8;
-    border-radius: 16px;
-    padding: 1.2rem 1rem;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    gap: 6px;
+    background: #f4f6f8;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+.day {
+    width: 90px;
+    flex-shrink: 0;
+    font-weight: bold;
+    color: #16395c;
+    font-size: clamp(13px, 2vw, 15px);
+}
+
+.icon {
+    font-size: 20px;
+    flex: 1;
     text-align: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.forecast-day:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+.temp-box {
+    text-align: right;
+    min-width: 40px;
 }
 
-.forecast-day h3 {
+.temp-box strong {
+    color: #16395c;
+    display: block;
+}
+
+.temp-box span {
+    color: gray;
     font-size: 13px;
-    font-weight: 600;
-    color: #888;
-    margin: 0;
 }
 
-.forecast-day p:first-of-type {
-    font-size: 22px;
-    margin: 4px 0;
+/* KEEP SAME LOOK ON ALL SCREENS */
+@media (max-width: 768px) {
+    #container {
+        max-width: 340px;
+    }
 }
 
-.forecast-day p:nth-of-type(2) {
-    font-size: 13px;
-    font-weight: 600;
-    color: #0d0d3d;
-    margin: 0;
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    #container {
+        width: 100%;
+        max-width: 340px;
+        padding: 10px;
+    }
+
+    #search-box button {
+        width: 70px;
+        font-size: 12px;
+    }
+
+    .forecast-day {
+        padding: 10px;
+    }
+
 }
-
-.forecast-day p:nth-of-type(3) {
-    font-size: 13px;
-    font-weight: 600;
-    color: #888;
-    margin: 0;
-}
-
-
 @media (max-width: 768px) {
     #cityInput {
         width: 100%;

@@ -94,15 +94,14 @@ function displayForecast(daily) {
         const date = new Date(daily.time[i]);
         const options = { weekday: 'long', month: 'short', day: 'numeric' };
         const dayName = date.toLocaleDateString(undefined, options);
-        const maxTemp = daily.temperature_2m_max[i];
-        const minTemp = daily.temperature_2m_min[i];
+        const maxTemp = Math.round(daily.temperature_2m_max[i]);
+        const minTemp = Math.round(daily.temperature_2m_min[i]);
         const { icon, description } = getWeatherDescription(daily.weather_code[i]);
         forecastDiv.innerHTML += `
             <div class="forecast-day">
                 <h3 class="forecast-date">${dayName}</h3>
                 <p class="forecast-icon">${icon}</p>
-                <p class="forecast-max">Max: ${maxTemp}°C</p>
-                <p class="forecast-min">Min: ${minTemp}°C</p>
+                <h4 class="forecast-max">Max: ${maxTemp}°C <p class="forecast-min">Min: ${minTemp}°C</p></h4>
             </div>
         `;
     }
