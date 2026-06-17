@@ -13,7 +13,7 @@
 }
 
 #navbar {
-    color: white;
+    color: rgb(243, 15, 15);
     background-color: #1A3C5E;
     padding: 20px 40px 40px 40px;
     border-radius: 15px 15px 0px 0px;
@@ -54,18 +54,30 @@
 
 #stats {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;   /* better spacing */
+    align-items: center;
     margin-top: 20px;
     border-radius: 15px;
     border: 1px solid #e0dede;
     color: #989ca0;
-    padding: 10px 100px ;
+    padding: 12px;
+    gap: 20px;                       /* controls spacing instead of huge padding */
+    width: 100%;
 }
+
 #stats div {
+    flex: 1;                        /* equal width */
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
+
+/* optional vertical divider */
+#stats div:not(:last-child) {
+    border-right: 1px solid #e0dede;
+}
+
 /* FORECAST */
 #forecast {
     margin-top: 15px;
@@ -78,14 +90,12 @@
 }
 
 #forecast h4 {
+    color: gray;
     margin-bottom: 10px;
     font-size: 13px;
     padding-top: 20px;
 }
-.forecast-max {
-    color: #d1261d;
-    font-size: 20px;
-}
+
 
 .forecast-day {
     display: flex;
