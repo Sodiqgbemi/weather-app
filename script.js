@@ -34,7 +34,7 @@ async function getCity() {
     const country = data.results[0].country;
 
     //console.log(data.results[0].latitude);
-        
+   ;
 
 
     await getWeather(latitude, longitude, name, country);
@@ -45,13 +45,14 @@ async function getCity() {
 // Fetch current weather and 5-day forecast
 async function getWeather(latitude , longitude, name, country) {
 
-    const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code&daily=temperature_2m_max,temperature_2m_min,weather_code&timezone=auto`;
+    const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code,uv_index&daily=temperature_2m_max,temperature_2m_min,weather_code,uv_index_max&timezone=auto`;
     const response = await fetch(weatherUrl);
     const data = await response.json();
     
-
+    //console.log(data);
      displayCurrentWeather(data, name, country);
      displayForecast(data.daily);
+      
 
  }
 
@@ -60,7 +61,7 @@ async function getWeather(latitude , longitude, name, country) {
     const currentWeatherDiv = document.getElementById("currentWeather");
     const stats = document.getElementById("stats");
     currentWeatherDiv.innerHTML = `
-        <h1>${getWeatherDescription(data.current.weather_code).icon}</h1>
+        <h1 id="weatherIcon">${getWeatherDescription(data.current.weather_code).icon}</h1>
         <h3>${name}, ${country}</h3>
         <h1> ${data.current.temperature_2m}°C</h1>
         <p> ${getWeatherDescription(data.current.weather_code).description}</p>
@@ -79,7 +80,7 @@ async function getWeather(latitude , longitude, name, country) {
         <hr>
         <div>
             <p>UV Index</p>
-             <p id="uvIndex">${getWeatherDescription(data.current.weather_code).description}</p>
+             <p id="uvIndex">${data.current.uv_index}</p>
         </div>
     `;
 
@@ -94,12 +95,15 @@ function displayForecast(daily) {
         const date = new Date(daily.time[i]);
         const options = { weekday: 'long', month: 'short', day: 'numeric' };
         const dayName = date.toLocaleDateString(undefined, options);
+        const today = new Date().toLocaleDateString(undefined, options);
+
+        const displayDay = (dayName === today) ? "Today  " : dayName;
         const maxTemp = Math.round(daily.temperature_2m_max[i]);
         const minTemp = Math.round(daily.temperature_2m_min[i]);
         const { icon, description } = getWeatherDescription(daily.weather_code[i]);
         forecastDiv.innerHTML += `
             <div class="forecast-day">
-                <h3 class="forecast-date">${dayName}</h3>
+                <h3 class="forecast-date">${displayDay}</h3>
                 <p class="forecast-icon">${icon}</p>
                 <h4 class="forecast-max">Max: ${maxTemp}°C <p class="forecast-min">Min: ${minTemp}°C</p></h4>
             </div>

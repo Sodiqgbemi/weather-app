@@ -51,6 +51,11 @@
     color : white;
 }
 
+#weatherIcon {
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
 #stats {
     display: flex;
     justify-content: space-between;   /* better spacing */
@@ -72,7 +77,6 @@
     text-align: center;
 }
 
-/* optional vertical divider */
 #stats div:not(:last-child) {
     border-right: 1px solid #e0dede;
 }
